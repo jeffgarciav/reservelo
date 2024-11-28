@@ -1,0 +1,8 @@
+{% extends "reservalo_main/base.html" %}
+
+{% block body %}
+<h1>{{ bicicleta.modelo }}</h1>
+<h1>{{ bicicleta.tamanio }}</h1>
+<h1>${{ bicicleta.precio }}</h1>
+<img src={{ bicicleta.imagen }}> 
+{% endblock %}

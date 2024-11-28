@@ -1,0 +1,32 @@
+{% extends "reservalo_main/base.html" %}
+{% load static %}
+
+{% block body %}
+<!--mensaje para anunciar creacion de usuarios-->
+{% if messages %}
+{%for message in messages%}
+{{ message }}
+{%endfor%}
+{% endif %}
+<div class="container">
+
+    
+    <!--listado de articulos-->
+    <div class="row cards-row">
+
+        {% for articulo in lista_articulos %}
+        {% if articulo.estado == 'disponible'  %}
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="{% static 'images/kalistecnico.png' %}" alt="Card image cap">
+            <div class="card-body">
+                <div id="nm{{ articulo.id }}" class="row"><h5 class="card-title">{{ articulo }}</h5></div>
+                <div class="row"><p class="card-text"> {{ articulo.modelo }} </p></div>
+                <div class="row"><a href="{% url 'articulo' articulo.id %}" class="btn btn-success mb-1">Detalles</a></div>
+                <div class="row"><button id="{{ articulo.id }}" class="btn atc btn-warning">Agregar al carrito</button></div>
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+        {% endblock %}
+</div>
